@@ -5,8 +5,7 @@ def cls():
 p1,p2,p3,p4,p5,p6,p7,p8,p9 = "-","-","-","-","X","-","-","-","-" #pola gry
 cls()
 
-
-print(f"\n|{p1}{p2}{p3}|\n|{p4}{p5}{p6}|\n|{p7}{p8}{p9}|\n")
+print(f"|{p1}{p2}{p3}|\n|{p4}{p5}{p6}|\n|{p7}{p8}{p9}|\n")
 
 while p1=="-" or p2=="-" or p3=="-" or p4=="-" or p6=="-" or p7=="-" or p8=="-" or p9=="-":
     if p1!="-" and p2!="-" and p3!="-" and p4!="-" and p6!="-" and p7!="-" and p8!="-" and p9!="-":
@@ -114,12 +113,20 @@ while p1=="-" or p2=="-" or p3=="-" or p4=="-" or p6=="-" or p7=="-" or p8=="-" 
             print (f"|{p1}{p2}{p3}|\n|{p4}{p5}{p6}|\n|{p7}{p8}{p9}|")
             print ("błąd")    
             continue   
-    if p1=="X" and p9=="-":                   #sytuacje szachowe
+    if p1=="X" and p9=="-":                     #sytuacje szachowe
         p9="X"
+    elif p2=="X" and p8=="-":
+        p8="X"    
     elif p3=="X" and p7=="-":
         p7="X"
+    elif p4=="X" and p6=="-":
+        p6="X"    
+    elif p6=="X" and p4=="-":
+        p4="X" 
     elif p7=="X" and p3=="-":
         p3="X"
+    elif p8=="X" and p2=="-":
+        p2="X"       
     elif p9=="X" and p1=="-":
         p1="X" 
     elif p1=="X" and p3=="X" and p2=="-":
@@ -130,24 +137,55 @@ while p1=="-" or p2=="-" or p3=="-" or p4=="-" or p6=="-" or p7=="-" or p8=="-" 
         p8="X" 
     elif p3=="X" and p9=="X" and p6=="-":
         p6="X"     
-    if p1=="O" and p3=="O" and p2=="-":       #sytuacje podbramkowe
-        p2="X"
-    if p1=="O" and p7=="O" and p4=="-":
-        p4="X"
-    if p3=="O" and p7=="O" and p6=="-":
-        p6="X" 
-    if p7=="O" and p9=="O" and p8=="-":
+    elif p7=="O" and p9=="O" and p8=="-":
         p8="X"
-    if p1=="O" and p3=="-":                   #sytuacje początkowe 
-        p3="X"
-    elif (p2=="O" or p3=="O" or p4=="O" or p6=="O" or p7=="O" or p8=="O") and p1=="-":
-        p1="X"                                 
-    elif p9=="O" and p2=="-" and p1=="-":
+    elif p1=="O" and p3=="O" and p2=="-":         #sytuacje podbramkowe
         p2="X"
+    elif p1=="O" and p7=="O" and p4=="-":
+        p4="X"
+    elif p3=="O" and p7=="O" and p1!="X" and p6=="-":
+        p6="X1" 
+    elif p6=="O" and p9=="O" and p3=="-":
+        p3="X" 
+    elif p8=="O" and p9=="O" and p7=="-":
+        p7="X"    
+    elif p3=="O" and p9=="O" and p6=="-":
+        p6="X"
+    elif p3=="O" and p9=="O" and p4=="O" and p2=="-":
+        p2="X"           
+    elif p1=="O" and p3=="-":                     #sytuacje początkowe 
+        p3="X"
+    elif p2=="O" and p1=="-":                     #sytuacje początkowe 
+        p1="X"  
+    elif p3=="O" and p6=="-":                     #sytuacje początkowe 
+        p6="X" 
+    elif p4=="O" and p2=="-":                     #sytuacje początkowe 
+        p2="X" 
+    elif p6=="O" and p9=="-":                     #sytuacje początkowe 
+        p9="X" 
+    elif p7=="O" and p8=="-":                     #sytuacje początkowe 
+        p8="X" 
+    elif p8=="O" and p7=="-":                     #sytuacje początkowe 
+        p7="X"  
+    elif p9=="O" and p4=="-":                     #sytuacje początkowe 
+        p4="X"                                                               
+    elif p1=="O" and p7=="O" and p6=="-":       #wyjątki 
+        p6="X" 
+    elif p1=="O" and p3=="O" and p4=="O" and p8=="O" and p9=="-":
+        p9="X" 
+    elif p3=="O" and p4=="O" and p8=="O" and p9=="O" and p1=="-":
+        p1="X" 
+    elif p1=="O" and p6=="O" and p7=="O" and p8=="O" and p2=="-":
+        p2="X"                                    
     cls()    
     print (f"|{p1}{p2}{p3}|\n|{p4}{p5}{p6}|\n|{p7}{p8}{p9}|")    
 if p1!="-" and p2!="-" and p3!="-" and p4!="-" and p6!="-" and p7!="-" and p8!="-" and p9!="-":
-    print ('REMIS')
+    if (p1=="X" and p2=="X" and p3=="X") or (p4=="X" and p5=="X" and p6=="X"):
+        print('PRZEGRAŁEŚ')
+    else:    
+        print ('REMIS')
 else:
     print ('PRZEGRAŁEŚ')
+
+    
 
